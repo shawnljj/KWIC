@@ -12,7 +12,7 @@ public class Input {
 		return wordsToIgnore;
 	}
 
-	public static void getInput() {
+	public void getInput() {
 		
 		//ask for input of movie titles 
 		inputMovieTitles();
@@ -20,12 +20,12 @@ public class Input {
 		inputWordsToIgnore();
 	}
 
-	private static void inputWordsToIgnore() {
+	private void inputWordsToIgnore() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static void inputMovieTitles() {
+	private void inputMovieTitles() {
 		// TODO Auto-generated method stub
 		
 	}
