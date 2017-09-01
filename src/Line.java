@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Line {
-	ArrayList<Word> words = new ArrayList<Word>();
+	Word[] words = new Word[];
 	
 	public void addWord(Word w) {
 		words.add(w);

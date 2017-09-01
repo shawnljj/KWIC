@@ -1,9 +1,16 @@
+import java.util.ArrayList;
 
-public class MovieTitle extends Word {
+public class MovieTitle{
+	Word[] wordsInTitle;
+	
+	public Word[] getWordsInTitle() {
+		return wordsInTitle;
+	}
 
-	public MovieTitle(String c) {
-		super(c);
-		// TODO Auto-generated constructor stub
+	public MovieTitle(String line) {
+		//Split words
+		String[] words = line.split(" ");
+		wordsInTitle = words;
 	}
 	
 }
