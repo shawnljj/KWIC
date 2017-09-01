@@ -28,7 +28,6 @@ public class CircularShift {
 	}
 
 	private Line shiftToBack(Word[] shiftedTitle) {
-		// TODO Auto-generated method stub
 		int numOfWords = shiftedTitle.length;
 		Word[] shifting = new Word[numOfWords];
 		for (int i = 0; i < numOfWords; i++) {
@@ -39,6 +38,7 @@ public class CircularShift {
 				shifting[i] = shiftedTitle[0];
 			}
 		}
+		
 	}
 
 }
