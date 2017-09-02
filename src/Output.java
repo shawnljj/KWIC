@@ -1,10 +1,12 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class Output {
 
-	public void print(ArrayList<Line> sortedLines) {
-		// TODO Auto-generated method stub
-		
+	public void print(List<Line> sortedLines) {
+		for(int i=0; i<sortedLines.size(); i++) {
+			String line = sortedLines.get(i).toString();
+			System.out.println(line);
+		}
 	}
 
 }

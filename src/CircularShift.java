@@ -1,10 +1,15 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class CircularShift {
-	ArrayList<Line> linesToReturn = new ArrayList<Line>();
+	public List<Line> applyShift(ArrayList<MovieTitle> movieTitles) {
+		// Circular shift all lines
+		return circularShiftAllLines(movieTitles);
+	}
 
-	public ArrayList<Line> applyShift(ArrayList<MovieTitle> movieTitles, ArrayList<WordToIgnore> wordsToIgnore) {
-		// Circular shift all lines, then remove lines which begin with a wordToIgnore
+	private List<Line> circularShiftAllLines(ArrayList<MovieTitle> movieTitles) {
+		List<Line> shiftedLines = new ArrayList<Line>();
+
 		for (MovieTitle title : movieTitles) {
 			// get number of words (that's the number of times to shift)
 			Word[] wordsInTitle = title.getWordsInTitle();
@@ -15,19 +20,17 @@ public class CircularShift {
 
 			for (int i = 0; i < numOfWords; i++) {
 				// shift first word to the back
+				shiftedTitle = shiftToBack(shiftedTitle);
 				// add to list of lines
-				linesToReturn.add(shiftToBack(shiftedTitle));
-
+				Line l = new Line(shiftedTitle);
+				shiftedLines.add(l);
 			}
-			// add to list of lines
-
 		}
-		return null;
-		// TODO Auto-generated method stub
-
+		
+		return shiftedLines;
 	}
 
-	private Line shiftToBack(Word[] shiftedTitle) {
+	private Word[] shiftToBack(Word[] shiftedTitle) {
 		int numOfWords = shiftedTitle.length;
 		Word[] shifting = new Word[numOfWords];
 		for (int i = 0; i < numOfWords; i++) {
@@ -38,7 +41,7 @@ public class CircularShift {
 				shifting[i] = shiftedTitle[0];
 			}
 		}
-		
+		return shifting;
 	}
 
 }

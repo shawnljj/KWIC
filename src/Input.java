@@ -18,8 +18,14 @@ public class Input {
 	public void getInput() {
 		Scanner sc = new Scanner(System.in);
 		// ask for input of movie titles
+		System.out.println("Enter each movie title in a new line: ");
+		System.out.println("(NOTE: Enter an empty title to proceed to the next step)");
+
 		inputMovieTitles(sc);
 		// ask for input of words to ignore
+		System.out.println("Enter each 'word to ignore' in a new line: ");
+		System.out.println("(NOTE: Enter an empty word to proceed to the next step)");
+
 		inputWordsToIgnore(sc);
 		sc.close();
 	}
@@ -28,14 +34,12 @@ public class Input {
 		try {
 			Scanner movieTitlesScanner = new Scanner(movieTitlesFile);
 			Scanner wordsToIgnoreScanner = new Scanner(wordsToIgnoreFile);
-
 			// read input of movie titles
 			inputMovieTitles(movieTitlesScanner);
 			// read input of words to ignore
 			inputWordsToIgnore(wordsToIgnoreScanner);
 			movieTitlesScanner.close();
 			wordsToIgnoreScanner.close();
-
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("No file(s) found!");
@@ -43,25 +47,30 @@ public class Input {
 	}
 
 	private void inputWordsToIgnore(Scanner sc) {
-		System.out.println("Enter each 'word to ignore' in a new line: ");
-		System.out.println("(NOTE: Enter an empty word to proceed to the next step)");
-
 		// while there is a line of text, store the input in wordsToIgnore list
 		while (sc.hasNextLine()) {
-			WordToIgnore word = new WordToIgnore(sc.nextLine());
-			wordsToIgnore.add(word);
+			String nextLine = sc.nextLine();
+			if (!nextLine.isEmpty()) {
+				WordToIgnore word = new WordToIgnore(nextLine);
+				wordsToIgnore.add(word);
+			} else {
+				break;
+			}
 		}
 	}
 
 	private void inputMovieTitles(Scanner sc) {
-		System.out.println("Enter each movie title in a new line: ");
-		System.out.println("(NOTE: Enter an empty title to proceed to the next step)");
-
 		// while there is a line of text, store the input in movieTitles list
 		while (sc.hasNextLine()) {
-			MovieTitle title = new MovieTitle(sc.nextLine());
-			movieTitles.add(title);
+			String nextLine = sc.nextLine();
+			if (!nextLine.isEmpty()) {
+				MovieTitle title = new MovieTitle(nextLine);
+				movieTitles.add(title);
+			} else {
+				break;
+			}
 		}
+
 	}
 
 }
